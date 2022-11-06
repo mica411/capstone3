@@ -22,7 +22,8 @@ public class RestaurantController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Restaurant> findAll() {
-        return restaurants;
+        return restaurantDao.findAll();
     }
 }
 
+// I need a second set of eyes When someone has a chance to check my code off of the git repo. I can't figure out why I'm still getting a 404 in Postman.
