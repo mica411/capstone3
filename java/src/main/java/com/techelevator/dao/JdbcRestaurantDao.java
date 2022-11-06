@@ -3,11 +3,14 @@ package com.techelevator.dao;
 import com.techelevator.model.Restaurant;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Component
 public class JdbcRestaurantDao implements RestaurantDao {
 
     private JdbcTemplate jdbcTemplate;
@@ -19,7 +22,7 @@ public class JdbcRestaurantDao implements RestaurantDao {
     @Override
     public List<Restaurant> findAll() {
         List<Restaurant> restaurants = new ArrayList<>();
-        String sql = "SELECT * FROM restaurant;";
+        String sql = "select * from restaurants;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             Restaurant r = mapRowToRestaurant(results);
