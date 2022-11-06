@@ -10,7 +10,7 @@ public interface RestaurantDao {
 
     List<Restaurant> findRestaurantByCity(String city);
 
-    List<Restaurant> findRestaurantByZip(Long zipCode);
+    List<Restaurant> findRestaurantByZip(Integer zipCode);
 
-
+    List<Restaurant> findRestaurantByCuisine(String cuisineType);
 }

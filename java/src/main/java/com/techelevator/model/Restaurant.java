@@ -15,7 +15,7 @@ public class Restaurant {
 
     public String state;
 
-    public Long zipCode;
+    public Integer zipCode;
 
     public String phoneNumber;
 
@@ -27,7 +27,8 @@ public class Restaurant {
     public Restaurant() {
 
     }
-    public Restaurant(Long resId, String restaurantName, String cuisineType, String streetAddress, String city, String state, Long zipCode, String phoneNumber, Long days, Long hours) {
+    // CHANGED ZIPCODE FROM LONG TO INTEGER 11/6/22 FOR TEST PURPOSES
+    public Restaurant(Long resId, String restaurantName, String cuisineType, String streetAddress, String city, String state, Integer zipCode, String phoneNumber, Long days, Long hours) {
         this.resId = resId;
         this.restaurantName = restaurantName;
         this.cuisineType = cuisineType;
@@ -90,11 +91,11 @@ public class Restaurant {
         this.state = state;
     }
 
-    public Long getZipCode() {
+    public Integer getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(Long zipCode) {
+    public void setZipCode(Integer zipCode) {
         this.zipCode = zipCode;
     }
 

@@ -3,10 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.RestaurantDao;
 import com.techelevator.model.Restaurant;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,8 +25,18 @@ public class RestaurantController {
         return restaurantDao.findAll();
     }
 
-    @RequestMapping(value = "/{zip}", method = RequestMethod.GET)
-    public List<Restaurant> findRestaurantByZip(@PathVariable Long zipCode) {
+    @RequestMapping(value = "/{zipCode}", method = RequestMethod.GET)
+    public List<Restaurant> findRestaurantByZip(@PathVariable Integer zipCode) {
         return restaurantDao.findRestaurantByZip(zipCode);
     }
+
+//    @RequestMapping(value = "/{city}", method = RequestMethod.GET)
+//    public List<Restaurant> findRestaurantByCity(@PathVariable String city) {
+//        return restaurantDao.findRestaurantByCity(city);
+//    }
+
+//    @RequestMapping(value = "/{cuisineType}", method = RequestMethod.GET)
+//    public List<Restaurant> findRestaurantByCuisine(@RequestParam String cuisineType) {
+//        return restaurantDao.findRestaurantByCuisine(cuisineType);
+//    }
 }
