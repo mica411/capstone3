@@ -3,6 +3,8 @@ import {Switch, Route, Redirect, Link} from 'react-router-dom'
 import Login from '../Login/Login'
 import Register from '../Register/Register'
 import Home from '../Home/Home'
+import UserScreen from '../UserScreen/UserScreen'
+
 import {addToken, deleteUser} from '../../Redux/actionCreators'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
@@ -35,6 +37,7 @@ class Main extends Component {
                 {this.props.token.token !== undefined ?
                         <div>
                             <Link to='/home'>Home | </Link>
+                            <Link to='/user-screen'>Home | </Link>
                             <Link to='/login' onClick={this.handleLogout}>logout</Link> 
                             <Redirect to='/home'/>
 
@@ -46,6 +49,8 @@ class Main extends Component {
                     <Route path='/login' component={() => <Login/>}/>
                     <Route path='/register'component={() => <Register/>}/>
                     <Route path='/home' component={this.props.token.token !== undefined ? () => <Home/> : null}/>
+                    {/* FIX IF TRUE LATER IN TERNARY */}
+                    <Route path='/user-screen' component={true ? () => <UserScreen/> : null}/>
                     <Redirect to='/login'/>
                 </Switch>
             </div>
