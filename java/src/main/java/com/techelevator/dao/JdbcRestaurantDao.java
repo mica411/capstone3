@@ -15,7 +15,7 @@ public class JdbcRestaurantDao implements RestaurantDao {
 
     // The DAO has native list of Restaurants it will generally return to the user
         // Declaring it here should allow us to populate and unpopulate it based on how the user searches. I hope.
-    List<Restaurant> restaurants = new ArrayList<>();
+//    List<Restaurant> restaurants = new ArrayList<>();
     // The DAO calls the JDBC Template
     private JdbcTemplate jdbcTemplate;
     // The DAO constructor sets the JDBC Template based on the datasource we've provided in the application properties
@@ -25,7 +25,7 @@ public class JdbcRestaurantDao implements RestaurantDao {
     // The DAO can list all of the restaurants currently populating its 'restaurants' List<Restaurant>
     @Override
     public List<Restaurant> list() {
-        return restaurants;
+        return null;
     }
     // The DAO cannot yet return a Restaurant based on Id
     @Override
@@ -41,6 +41,7 @@ public class JdbcRestaurantDao implements RestaurantDao {
 
     @Override
     public List<Restaurant> findAllRestaurants() {
+        List<Restaurant> restaurants = new ArrayList<>();
         String sql = "select * from restaurants";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
@@ -62,6 +63,7 @@ public class JdbcRestaurantDao implements RestaurantDao {
 
     @Override
     public List<Restaurant> findRestaurantByZip(Integer searchZip) {
+        List<Restaurant> restaurants = new ArrayList<>();
         String sql = "SELECT * FROM restaurants " +
                 "WHERE zip = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, searchZip);
