@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/api/restaurants")
 public class RestaurantController {
 
-    List<Restaurant> restaurants;
+//    List<Restaurant> restaurants;
 
     @Autowired
     RestaurantDao restaurantDao;

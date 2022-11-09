@@ -72,10 +72,11 @@ public class JdbcRestaurantDao implements RestaurantDao {
         }
         List<Restaurant> matchZip = new ArrayList<>();
         for (Restaurant restaurant : restaurants) {
-            if (restaurant.getZipCode() == searchZip) {
+            if (restaurant.getZipCode().equals(searchZip)) {
                 matchZip.add(restaurant);
             }
         }
+
         return matchZip;
     }
 
