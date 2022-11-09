@@ -1,13 +1,116 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* LOGIN PAGE CSS */
+
+#loginDiv{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#formDiv{
+  background-color: white;
+  height: 50vh;
+  padding: 30px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(56, 56, 56);
+}
+
+#formDiv input{
+  border: 1px solid rgb(56, 56, 56);
+  border-radius: 0px;
+  margin-bottom: 20px;
+}
+
+#formSubMenu{
+  display: flex;
+  font-size: 9px;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: -15px;
+  margin-bottom: 30px;
+}
+
+#formSubMenu a{
+  text-decoration: none;
+}
+
+#formDiv button{
+  background-color: #077A27;
+  border: 1px solid #077a2800;
+  padding: 5px 25px;
+  color: white;
+  transition: 0.3s all;
+}
+
+#formDiv button:hover{
+  background-color: white;
+  border: 1px solid #077A27;
+  color: #077A27;
+  transition: 0.3s all;
+}
+
+/* USER SCREEN CSS */
+
+#userScreenDiv{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#userOnline{
+  height: 50px;
+  border: 1px solid rgb(56, 56, 56);
+  border-radius: 10px;
+  margin-bottom: 10px ;
+}
+
+#screenDiv{
+  background-color: white;
+  height: 60vh;
+  padding: 25px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(56, 56, 56);
+  border-radius: 10px;
+}
+
+#screenDiv img{
+  width: 300px;
+  height: 250px;
+  background-color: #FFFF00;
+  margin-bottom: 20px;
+}
+
+#screenDivInfo{
+  height: 100px;
+  width: 300px;
+  border: 1.5px dashed black;
+  padding: 10px 10px;
+}
+
+#dineDashButtons{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+#dineDashButtons button{
+  border: 1px solid rgba(0, 0, 0, 0);
+  padding: 10px 40px;
+  border-radius: 5px;
+  color: white;
+}
+
+#dineDashButtons button:nth-child(1){
+  background-color: #009600;
+}
+
+#dineDashButtons button:nth-child(2){
+  background-color: #FF0000;
 }

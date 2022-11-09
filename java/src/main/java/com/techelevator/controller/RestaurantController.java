@@ -1,14 +1,14 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.JdbcRestaurantDao;
 import com.techelevator.dao.RestaurantDao;
 import com.techelevator.model.Restaurant;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+// We have declared this as a RestController and implemented the top level API request mapping
 @RestController
 @RequestMapping("/api/restaurants")
 public class RestaurantController {
@@ -22,10 +22,23 @@ public class RestaurantController {
         this.restaurantDao = restaurantDao;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public List<Restaurant> findAll() {
-        return restaurantDao.findAll();
+    @RequestMapping(path = "", method = RequestMethod.GET)
+    public List<Restaurant> findAllRestaurants() {
+        return restaurantDao.findAllRestaurants();
     }
-}
 
-// I need a second set of eyes When someone has a chance to check my code off of the git repo. I can't figure out why I'm still getting a 404 in Postman.
+    @RequestMapping(path = "/{zipCode}", method = RequestMethod.GET)
+    public List<Restaurant> findRestaurantByZip(@PathVariable Integer zipCode) {
+        return restaurantDao.findRestaurantByZip(zipCode);
+    }
+
+//    @RequestMapping(value = "/{city}", method = RequestMethod.GET)
+//    public List<Restaurant> findRestaurantByCity(@RequestParam @PathVariable String city) {
+//        return restaurantDao.findRestaurantByCity(city);
+//    }
+
+//    @RequestMapping(value = "/{cuisineType}", method = RequestMethod.GET)
+//    public List<Restaurant> findRestaurantByCuisine(@RequestParam String cuisineType) {
+//        return restaurantDao.findRestaurantByCuisine(cuisineType);
+//    }
+}

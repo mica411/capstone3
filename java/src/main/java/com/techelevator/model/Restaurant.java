@@ -15,18 +15,20 @@ public class Restaurant {
 
     public String state;
 
-    public Long zipCode;
+    public Integer zipCode;
 
-    public Long phoneNumber;
+    public String phoneNumber;
 
-    public String hours;
+    public Long days;
+
+    public Long hours;
 
     // constructors
     public Restaurant() {
 
     }
-
-    public Restaurant(Long resId, String restaurantName, String cuisineType, String streetAddress, String city, String state, Long zipCode, Long phoneNumber, String hours) {
+    // CHANGED ZIPCODE FROM LONG TO INTEGER 11/6/22 FOR TEST PURPOSES
+    public Restaurant(Long resId, String restaurantName, String cuisineType, String streetAddress, String city, String state, Integer zipCode, String phoneNumber, Long days, Long hours) {
         this.resId = resId;
         this.restaurantName = restaurantName;
         this.cuisineType = cuisineType;
@@ -35,10 +37,11 @@ public class Restaurant {
         this.state = state;
         this.zipCode = zipCode;
         this.phoneNumber = phoneNumber;
+        this.days = days;
         this.hours = hours;
     }
 
-    // getters & setters
+    // getters and setters
 
     public Long getResId() {
         return resId;
@@ -88,27 +91,35 @@ public class Restaurant {
         this.state = state;
     }
 
-    public Long getZipCode() {
+    public Integer getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(Long zipCode) {
+    public void setZipCode(Integer zipCode) {
         this.zipCode = zipCode;
     }
 
-    public Long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getHours() {
+    public Long getDays() {
+        return days;
+    }
+
+    public void setDays(Long days) {
+        this.days = days;
+    }
+
+    public Long getHours() {
         return hours;
     }
 
-    public void setHours(String hours) {
+    public void setHours(Long hours) {
         this.hours = hours;
     }
 
@@ -122,8 +133,9 @@ public class Restaurant {
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", zipCode=" + zipCode +
-                ", phoneNumber=" + phoneNumber +
-                ", hours='" + hours + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", days=" + days +
+                ", hours=" + hours +
                 '}';
     }
 }

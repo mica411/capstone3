@@ -6,11 +6,17 @@ import java.util.List;
 
 public interface RestaurantDao {
 
-    List<Restaurant> findAll();
+    List<Restaurant> list();
+
+    Restaurant get(int id);
+
+    Restaurant create(Restaurant restaurant);
+
+    List<Restaurant> findAllRestaurants();
 
     List<Restaurant> findRestaurantByCity(String city);
 
-    List<Restaurant> findRestaurantByZip(Long zipCode);
+    List<Restaurant> findRestaurantByZip(Integer zipCode);
 
-
+    List<Restaurant> findRestaurantByCuisine(String cuisineType);
 }
