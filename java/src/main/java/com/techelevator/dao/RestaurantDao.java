@@ -6,7 +6,13 @@ import java.util.List;
 
 public interface RestaurantDao {
 
-    List<Restaurant> findAll();
+    List<Restaurant> list();
+
+    Restaurant get(int id);
+
+    Restaurant create(Restaurant restaurant);
+
+    List<Restaurant> findAllRestaurants();
 
     List<Restaurant> findRestaurantByCity(String city);
 
