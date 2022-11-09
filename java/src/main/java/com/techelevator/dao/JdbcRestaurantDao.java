@@ -41,7 +41,7 @@ public class JdbcRestaurantDao implements RestaurantDao {
 
     @Override
     public List<Restaurant> findAllRestaurants() {
-        String sql = "SELECT * FROM restaurants;";
+        String sql = "select * from restaurants";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             restaurants.add(mapRowToRestaurant(results));
@@ -99,8 +99,8 @@ public class JdbcRestaurantDao implements RestaurantDao {
         r.setState(result.getString("state_name"));
         r.setZipCode(result.getInt("zip"));
         r.setPhoneNumber(result.getString("phone_number"));
-        r.setDays(result.getLong("open_days"));
-        r.setHours(result.getLong("open_hours"));
+        // r.setDays(result.getLong("open_days"));
+        // r.setHours(result.getLong("open_hours"));
         return r;
     }
 }
