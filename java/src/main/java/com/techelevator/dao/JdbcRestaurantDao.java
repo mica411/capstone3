@@ -21,44 +21,54 @@ public class JdbcRestaurantDao implements RestaurantDao {
     // The DAO constructor sets the JDBC Template based on the datasource we've provided in the application properties
     public JdbcRestaurantDao(DataSource ds) {
         this.jdbcTemplate = new JdbcTemplate(ds);
+//        this.restaurants = findAllRestaurants();
     }
-    // The DAO can list all of the restaurants currently populating its 'restaurants' List<Restaurant>
+    // The DAO can list all of the restaurants currently populating the 'restaurants' Database
     @Override
     public List<Restaurant> list() {
-        return null;
+        return findAllRestaurants(); // this method is called within this class (for now?), see below
     }
+    // get & create were added in keeping with what appears to be a general model, and may not be necessary for an MVP
     // The DAO cannot yet return a Restaurant based on Id
     @Override
     public Restaurant get(int id) {
         return null;
     }
-    // The DAO cannot yet create a Restaurant and may not be necessary for an MVP
-        // this was added in keeping with what appears to be a general model
+
+    // The DAO cannot yet create a Restaurant
     @Override
     public Restaurant create(Restaurant restaurant) {
         return null;
     }
 
+    // This method will query the database and populate a list of restaurants with the results
     @Override
     public List<Restaurant> findAllRestaurants() {
-        List<Restaurant> restaurants = new ArrayList<>();
-        String sql = "select * from restaurants";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-        while (results.next()) {
-            restaurants.add(mapRowToRestaurant(results));
+        List<Restaurant> restaurants = new ArrayList<>();           // make a list
+        String sql = "select * from restaurants";                   // write a SQL query
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);       // make a row_set object and query the database
+        while (results.next()) {                                    // ↓ while the row_set finds a new line ↓
+            restaurants.add(mapRowToRestaurant(results));           // add the current row from results to restaurants list
         }
-        return restaurants;
+        return restaurants;                                         // send back the data
     }
     @Override
     public List<Restaurant> findRestaurantByCity(String city) {
-//        List<Restaurant> r = new ArrayList<>();
-//        String sql = "select * from restaurants " +
-//                    "WHERE city = '?';";
-//        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, city);
-//        while (results.next()) {
-//            r.add(mapRowToRestaurant(results));
-//        }
-        return null;
+        List<Restaurant> restaurants = new ArrayList<>();
+        String sql = "select * from restaurants " +
+                    "WHERE city ILIKE '?';";
+        String searchCity = "%" + city + "%";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, searchCity);
+        while (results.next()) {
+            restaurants.add(mapRowToRestaurant(results));
+        }
+        List<Restaurant> matchCity = new ArrayList<>();
+        for (Restaurant restaurant : restaurants) {
+            if (restaurant.getCity().equals(searchCity)) {
+                matchCity.add(restaurant);
+            }
+        }
+        return matchCity;
     }
 
     @Override

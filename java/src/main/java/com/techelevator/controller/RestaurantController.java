@@ -23,8 +23,8 @@ public class RestaurantController {
     }
 
     @RequestMapping(path = "", method = RequestMethod.GET)
-    public List<Restaurant> findAllRestaurants() {
-        return restaurantDao.findAllRestaurants();
+    public List<Restaurant> list() {
+        return restaurantDao.list();
     }
 
     @RequestMapping(path = "/{zipCode}", method = RequestMethod.GET)
@@ -32,8 +32,8 @@ public class RestaurantController {
         return restaurantDao.findRestaurantByZip(zipCode);
     }
 
-//    @RequestMapping(value = "/{city}", method = RequestMethod.GET)
-//    public List<Restaurant> findRestaurantByCity(@RequestParam @PathVariable String city) {
+//    @RequestMapping(path = "/{city}", method = RequestMethod.GET)
+//    public List<Restaurant> findRestaurantByCity(@RequestParam(value = "city") String city) {
 //        return restaurantDao.findRestaurantByCity(city);
 //    }
 

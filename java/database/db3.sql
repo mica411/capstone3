@@ -91,6 +91,8 @@ VALUES ('Shukette', '230 9th Ave', 'Middle Eastern', 'New York', 'NY', 10001, '2
 INSERT INTO restaurants (restaurant_name, street, cuisine_type, city, state_name, zip, phone_number) 
 VALUES ('Piccola Cucine Estiatorio', '75 Thompson St', 'Sicilian', 'New York', 'NY', 10012, '646-781-9183');
 
+INSERT INTO restaurants (restaurant_name, street, cuisine_type, city, state_name, zip, phone_number) 
+VALUES ('Slows Bar BQ', '2138 Michigan Ave', 'Barbecue', 'Detroit', 'MI', 48216, '313-962-9828');
 
 INSERT INTO restaurant_open (res_id, day_id, hours_id) VALUES (1, 1, 1);
 INSERT INTO restaurant_open (res_id, day_id, hours_id) VALUES (1, 2, 1);
