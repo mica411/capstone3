@@ -8,9 +8,7 @@ public interface RestaurantDao {
 
     List<Restaurant> list();
 
-    Restaurant get(int id);
-
-    Restaurant create(Restaurant restaurant);
+//    Restaurant get(int id);
 
     List<Restaurant> findAllRestaurants();
 

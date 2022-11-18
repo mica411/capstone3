@@ -30,16 +30,6 @@ public class JdbcRestaurantDao implements RestaurantDao {
     }
     // get & create were added in keeping with what appears to be a general model, and may not be necessary for an MVP
     // The DAO cannot yet return a Restaurant based on Id
-    @Override
-    public Restaurant get(int id) {
-        return null;
-    }
-
-    // The DAO cannot yet create a Restaurant
-    @Override
-    public Restaurant create(Restaurant restaurant) {
-        return null;
-    }
 
     // This method will query the database and populate a list of restaurants with the results
     @Override
@@ -56,15 +46,14 @@ public class JdbcRestaurantDao implements RestaurantDao {
     public List<Restaurant> findRestaurantByCity(String city) {
         List<Restaurant> restaurants = new ArrayList<>();
         String sql = "select * from restaurants " +
-                    "WHERE city ILIKE '?';";
-        String searchCity = "%" + city + "%";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, searchCity);
+                    "WHERE city = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, city);
         while (results.next()) {
             restaurants.add(mapRowToRestaurant(results));
         }
         List<Restaurant> matchCity = new ArrayList<>();
         for (Restaurant restaurant : restaurants) {
-            if (restaurant.getCity().equals(searchCity)) {
+            if (restaurant.getCity().equals(city)) {
                 matchCity.add(restaurant);
             }
         }
@@ -92,14 +81,21 @@ public class JdbcRestaurantDao implements RestaurantDao {
 
     @Override
     public List<Restaurant> findRestaurantByCuisine(String cuisineType) {
-//        List<Restaurant> r = new ArrayList<>();
-//        String sql = "SELECT * FROM restaurants " +
-//                    "WHERE cuisine_type = '?';";
-//        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, cuisineType);
-//        while (results.next()) {
-//            r.add(mapRowToRestaurant(results));
-//        }
-        return null;
+        List<Restaurant> restaurants = new ArrayList<>();
+        String searchCuisine = cuisineType.toLowerCase();
+        String sql = "SELECT * FROM restaurants " +
+                    "WHERE cuisine_type ILIKE ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, searchCuisine);
+        while (results.next()) {
+            restaurants.add(mapRowToRestaurant(results));
+        }
+        List<Restaurant> matchCuisine = new ArrayList<>();
+        for (Restaurant restaurant : restaurants) {
+            if (restaurant.getCuisineType().equals(cuisineType)) {
+                matchCuisine.add(restaurant);
+            }
+        }
+        return matchCuisine;
     }
 
     private Restaurant mapRowToRestaurant(SqlRowSet result) {
