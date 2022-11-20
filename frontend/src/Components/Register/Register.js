@@ -33,7 +33,9 @@ class Register extends Component{
 
     render(){
         return(
-            <div>
+            <div id="intDiv">
+                
+                <div id="formDiv">
                 <h1>Create Account</h1>
                 <label class="sr-only">Username</label>
                 <input
@@ -67,8 +69,12 @@ class Register extends Component{
                     onChange={this.handleInputChange}
                     required
                 />
-                <Link to="/login">Have an account?</Link>
-                <button type="submit" onClick={this.handleSubmit}>Sign in</button>
+                <div id="formSubMenu">
+                    <Link to="/login">Have an account?</Link>                    
+                </div>
+                <button type="submit" onClick={this.handleSubmit}>Sign in</button>                
+                </div>
+                
             </div>
         )
     }

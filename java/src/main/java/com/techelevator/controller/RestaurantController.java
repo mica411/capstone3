@@ -10,6 +10,7 @@ import java.util.List;
 
 // We have declared this as a RestController and implemented the top level API request mapping
 @RestController
+@CrossOrigin
 @RequestMapping("/api/restaurants")
 public class RestaurantController {
 

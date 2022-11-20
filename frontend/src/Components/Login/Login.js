@@ -22,6 +22,7 @@ class Login extends Component {
             password: ''
         }
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleGuest = this.handleGuest.bind(this);
     }
     
 
@@ -36,6 +37,10 @@ class Login extends Component {
         await this.props.dispatch(addUser(userWithToken.data.user));
     }
 
+    handleGuest = () => {
+
+    }
+
     handleInputChange = (event) => {
         event.preventDefault()
         this.setState({
@@ -45,25 +50,25 @@ class Login extends Component {
 
     render(){
         return(
-            <div id="loginDiv">
+            <div id="intDiv">
                 <div id="formDiv">
-                    <label class="sr-only">Username</label>
+                    <label className="sr-only">Username</label>
                     <input
                         type="text"
                         id="username"
                         name="username"
-                        class="form-control"
+                        className="form-control"
                         placeholder="Username"
                         v-model="user.username"
                         onChange={this.handleInputChange}
                         required
                     />
-                    <label class="sr-only">Password</label>
+                    <label className="sr-only">Password</label>
                     <input
                         type="password"
                         id="password"
                         name="password"
-                        class="form-control"
+                        className="form-control"
                         placeholder="Password"
                         v-model="user.password"
                         onChange={this.handleInputChange}
@@ -74,6 +79,8 @@ class Login extends Component {
                         <Link to="/register">Forgot Password?</Link>
                     </div>
                     <button type="submit" onClick={this.handleLogin}>Sign in</button>
+                    <br/>
+                    <button type="submit" style={{backgroundColor:'blue'}}>Login As Guest</button>
             </div>
             </div>
         )

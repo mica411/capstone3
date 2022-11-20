@@ -54,13 +54,17 @@ public class AuthenticationController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public void register(@Valid @RequestBody RegisterUserDTO newUser) {
+    public boolean register(@Valid @RequestBody RegisterUserDTO newUser) {
+        boolean isRegistrationSuccess = false;
         try {
             User user = userDao.findByUsername(newUser.getUsername());
             throw new UserAlreadyExistsException();
         } catch (UsernameNotFoundException e) {
             userDao.create(newUser.getUsername(),newUser.getPassword(), newUser.getRole());
+            isRegistrationSuccess = true;
         }
+
+        return isRegistrationSuccess;
     }
 
     /**
